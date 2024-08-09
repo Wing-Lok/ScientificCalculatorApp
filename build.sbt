@@ -9,8 +9,4 @@ libraryDependencies ++= Seq(
   "org.openjfx" % "javafx-fxml" % "22.0.1"
 )
 
-// Specify JavaFX module paths
-javaOptions ++= Seq(
-  "--module-path", "/Users/yapwinglok/Downloads/javafx-sdk-22.0.2/lib",
-  "--add-modules", "javafx.controls,javafx.fxml"
-)
+

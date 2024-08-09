@@ -1,3 +1,5 @@
+package scientific.calculator.app
+
 class CalculatorLogic {
   // Basic arithmetic operations
   def add(a: Double, b: Double): Double = a + b
@@ -21,7 +23,6 @@ class CalculatorLogic {
     else math.sqrt(x)
   }
   def exp(x: Double): Double = math.exp(x)
-  def pow(x: Double, y: Double): Double = math.pow(x, y)
   def asin(x: Double): Double = math.asin(x)
   def acos(x: Double): Double = math.acos(x)
   def atan(x: Double): Double = math.atan(x)

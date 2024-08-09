@@ -1,3 +1,5 @@
+package scientific.calculator.app
+
 import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.scene.Scene
@@ -30,13 +32,13 @@ class CalculatorApp extends Application {
       "7", "8", "9", "/", "sin", "cos",
       "4", "5", "6", "*", "tan", "log",
       "1", "2", "3", "-", "sqrt", "exp",
-      "0", ".", "=", "+", "pow", "clear"
+      "0", ".", "=", "+", "clear"
     )
 
     buttons.zipWithIndex.foreach {
       case (text, index) =>
         val button = new Button(text)
-        button.setStyle("-fx-font-size: 18px;")
+        button.setStyle("-fx-font-size: 23px;")
         button.setOnAction(_ => handleButtonPress(text))
         grid.add(button, index % 6, index / 6)
     }
@@ -59,19 +61,19 @@ class CalculatorApp extends Application {
 
   private def calculateResult(): Unit = {
     val input = display.getText
-    println(s"Evaluating: $input")  // Debugging line
+    println(s"Evaluating: $input")
     try {
       val result = evaluateExpression(input)
       display.setText(result.toString)
     } catch {
       case e: ArithmeticException =>
-        println(s"Math Error: ${e.getMessage}")  // Debugging line
+        println(s"Math Error: ${e.getMessage}")
         display.setText("Math Error")
       case e: IllegalArgumentException =>
-        println(s"Syntax Error: ${e.getMessage}")  // Debugging line
+        println(s"Syntax Error: ${e.getMessage}")
         display.setText("Syntax Error")
       case e: Exception =>
-        println(s"Error: ${e.getMessage}")  // Debugging line
+        println(s"Error: ${e.getMessage}")
         display.setText("Error")
     }
   }
@@ -80,7 +82,6 @@ class CalculatorApp extends Application {
     val operators = List("+", "-", "*", "/", "pow")
     val functions = List("sin", "cos", "tan", "log", "sqrt", "exp", "asin", "acos", "atan")
 
-    // Find the position of the first operator or function
     val opPos = operators.map(op => expression.indexOf(op)).filter(_ >= 0).sorted.headOption
     val funcPos = functions.map(func => expression.indexOf(func)).filter(_ >= 0).sorted.headOption
 
@@ -98,7 +99,6 @@ class CalculatorApp extends Application {
           case "-" => calculator.subtract(a, b)
           case "*" => calculator.multiply(a, b)
           case "/" => calculator.divide(a, b)
-          case "pow" => calculator.pow(a, b)
           case _ => throw new IllegalArgumentException("Invalid operator")
         }
 
